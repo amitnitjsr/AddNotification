@@ -2,13 +2,17 @@
 
 const setLocalStorageData = (data) => {
     localStorage.setItem("data_list", JSON.stringify(data));
-    const data1 = JSON.parse(localStorage.getItem("data_list"))
-    localStorage.setItem('count', data1.length)
+    const data1 = JSON.parse(localStorage.getItem("data_list"));
+    if (data1)
+        localStorage.setItem('count', data1.length)
 }
 
 const getLocalStorageData = () => {
     const data = JSON.parse(localStorage.getItem("data_list"));
-    localStorage.setItem('count', data.length)
+    if (data) {
+        localStorage.setItem('count', data.length)
+    }
+
     if (Array.isArray(data)) {
         return data;
     } else {
